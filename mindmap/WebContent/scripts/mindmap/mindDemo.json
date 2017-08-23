@@ -1,0 +1,261 @@
+{
+        "root": {
+            "data": {"id": "26d32250f6e8", "created": 1496309457, "text": "电脑", "expandState": "expand"},
+            "children": [{
+                "data": {
+                    "id": "bd99kr0ufi80",
+                    "created": 1496309857692,
+                    "text": "组成",
+                    "expandState": "collapse",
+                    "layout_mind_offset": {
+                        "x": -51,
+                        "y": -29
+                    },
+                    "background":"#d99594"
+                },
+                "children": [{
+                    "data": {
+                        "id": "bd99kxtviaog",
+                        "created": 1496309872508,
+                        "text": "cpu 内存 io",
+                        "expandState": "expand",
+                        "layout": null
+                    },
+                    "children": [{
+                        "data": {
+                            "id": "bd99lcqlsr48",
+                            "created": 1496309904962,
+                            "text": "速度差距",
+                            "expandState": "expand",
+                            "layout": null
+                        },
+                        "children": [{
+                            "data": {
+                                "id": "bd99lkzr4y04",
+                                "created": 1496309922929,
+                                "text": "总线",
+                                "expandState": "expand",
+                                "layout": null
+                            }, "children": []
+                        }, {
+                            "data": {
+                                "id": "bd99lo7b3808",
+                                "created": 1496309929917,
+                                "text": "南桥（慢速） 北桥（快速）",
+                                "expandState": "expand",
+                                "layout": null
+                            }, "children": []
+                        }]
+                    }]
+                }]
+            }, {
+                "data": {
+                    "id": "bd99m9mawmos",
+                    "created": 1496309976536,
+                    "text": "分层",
+                    "expandState": "expand",
+                    "layout": null
+                },
+                "children": [{
+                    "data": {
+                        "id": "bd99me4nqq04",
+                        "created": 1496309986353,
+                        "text": "抽象",
+                        "expandState": "expand",
+                        "layout": null
+                    }, "children": []
+                }, {
+                    "data": {
+                        "id": "bd99mi2clrsw",
+                        "created": 1496309994920,
+                        "text": "向后兼容",
+                        "expandState": "expand",
+                        "layout": null
+                    }, "children": []
+                }]
+            }, {
+                "data": {
+                    "id": "bd99mqhkbsow",
+                    "created": 1496310013254,
+                    "text": "操作系统",
+                    "expandState": "expand",
+                    "layout": null
+                },
+                "children": [{
+                    "data": {
+                        "id": "bd99mw26sls8",
+                        "created": 1496310025385,
+                        "text": "应用-操作系统-硬件",
+                        "expandState": "expand",
+                        "layout": null
+                    }, "children": []
+                }, {
+                    "data": {
+                        "id": "bd99n9tkco0k",
+                        "created": 1496310055339,
+                        "text": "驱动",
+                        "expandState": "expand",
+                        "layout": null
+                    }, "children": []
+                }]
+            }, {
+                "data": {
+                    "id": "bd99mtan7mwo",
+                    "created": 1496310019366,
+                    "text": "内存管理",
+                    "expandState": "expand",
+                    "layout": null
+                },
+                "children": [{
+                    "data": {
+                        "id": "bd99nipy3xck",
+                        "created": 1496310074711,
+                        "text": "问题",
+                        "expandState": "expand",
+                        "layout": null
+                    },
+                    "children": [{
+                        "data": {
+                            "id": "bd99nomlz4g8",
+                            "created": 1496310087570,
+                            "text": "互相影响",
+                            "priority": 1,
+                            "expandState": "expand",
+                            "layout": null
+                        }, "children": []
+                    }, {
+                        "data": {
+                            "id": "bd99npyt9y0c",
+                            "created": 1496310090485,
+                            "text": "不够用",
+                            "priority": 2,
+                            "expandState": "expand",
+                            "layout": null
+                        }, "children": []
+                    }, {
+                        "data": {
+                            "id": "bd99nrjs7k00",
+                            "created": 1496310093930,
+                            "text": "地址老变",
+                            "priority": 3,
+                            "expandState": "expand",
+                            "layout": null
+                        }, "children": []
+                    }]
+                }, {
+                    "data": {
+                        "id": "bd99o6spj88c",
+                        "created": 1496310127121,
+                        "text": "解决",
+                        "expandState": "expand",
+                        "layout": null
+                    },
+                    "children": [{
+                        "data": {
+                            "id": "bd99ocpiiio0",
+                            "created": 1496310139989,
+                            "text": "分段",
+                            "expandState": "expand",
+                            "layout": null
+                        },
+                        "children": [{
+                            "data": {
+                                "id": "bd99okdtmnks",
+                                "created": 1496310156696,
+                                "text": "解决问题 1、3",
+                                "expandState": "expand",
+                                "layout": null
+                            }, "children": []
+                        }]
+                    }, {
+                        "data": {
+                            "id": "bd99ofy5z6gc",
+                            "created": 1496310147042,
+                            "text": "分页",
+                            "expandState": "expand",
+                            "layout": null
+                        },
+                        "children": [{
+                            "data": {
+                                "id": "bd99oqfidbks",
+                                "created": 1496310169859,
+                                "text": "粒度更细",
+                                "expandState": "expand",
+                                "layout": null
+                            }, "children": []
+                        }, {
+                            "data": {
+                                "id": "bd99ovf9nz4k",
+                                "created": 1496310180728,
+                                "text": "抽象层-映射",
+                                "expandState": "expand",
+                                "layout": null
+                            }, "children": []
+                        }]
+                    }]
+                }]
+            }, {
+                "data": {
+                    "id": "bd99pd18vuw4",
+                    "created": 1496310219062,
+                    "text": "多线程",
+                    "layout": null,
+                    "expandState": "expand",
+                    "progress": null,
+                    "priority": null
+                },
+                "children": [{
+                    "data": {
+                        "id": "bd99q9xfjkg8",
+                        "created": 1496310290665,
+                        "text": "共享",
+                        "expandState": "expand",
+                        "layout": null
+                    },
+                    "children": [{
+                        "data": {
+                            "id": "bd99rcyefyo8",
+                            "created": 1496310375618,
+                            "text": "全局变量、堆、静态变量、代码、资源（打开的文件）",
+                            "expandState": "expand",
+                            "layout": null
+                        }, "children": []
+                    }]
+                }, {
+                    "data": {
+                        "id": "bd99qcus5s84",
+                        "created": 1496310297035,
+                        "text": "自有",
+                        "expandState": "expand",
+                        "layout": null
+                    },
+                    "children": [{
+                        "data": {
+                            "id": "bd99quaqnmok",
+                            "created": 1496310335006,
+                            "text": "栈、寄存器、thread Local",
+                            "expandState": "expand",
+                            "layout": null
+                        }, "children": []
+                    }]
+                }, {
+                    "data": {
+                        "id": "bd99s3ws3808",
+                        "created": 1496310434293,
+                        "text": "状态",
+                        "expandState": "expand",
+                        "layout": null
+                    },
+                    "children": [{
+                        "data": {
+                            "id": "bd99s5znhwgk",
+                            "created": 1496310438821,
+                            "text": "运行、就绪、等待",
+                            "expandState": "expand",
+                            "layout": null
+                        }, "children": []
+                    }]
+                }]
+            }]
+        },"template": "right", "theme": "snow", "version": "1.4.43"
+    }

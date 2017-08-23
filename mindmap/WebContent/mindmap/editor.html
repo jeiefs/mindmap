@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>脑图</title>
+<!-- bower:css -->
+<link rel="stylesheet"
+	href="../scripts/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../scripts/codemirror/lib/codemirror.css" />
+<link rel="stylesheet" href="../scripts/hotbox/hotbox.css" />
+<link rel="stylesheet"
+	href="../scripts/kityminder-core/dist/kityminder.core.css" />
+<link rel="stylesheet"
+	href="../scripts/color-picker/dist/color-picker.min.css" />
+<!-- endbower -->
+
+<link rel="stylesheet"
+	href="../scripts/kityminder-editor/kityminder.editor.min.css">
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    h1.editor-title {
+        background: #393F4F;
+        color: white;
+        margin: 0;
+        height: 40px;
+        font-size: 14px;
+        line-height: 40px;
+        font-family: 'Hiragino Sans GB', 'Arial', 'Microsoft Yahei';
+        font-weight: normal;
+        padding: 0 20px;
+    }
+
+    div.minder-editor-container {
+        position: absolute;
+        top: 0px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 80%
+    }
+</style>
+
+</head>
+<body ng-app="kityminderCtn" ng-controller="MainController">
+	<kityminder-editor on-init="initEditor(editor, minder)"></kityminder-editor>
+	
+	<div id="card" style="background-color: red;position: relative;top:20px;left:100px;width:120px;height:200px;z-index: 100;display: none;">hhhhh</div>
+</body>
+<!-- bower:js -->
+<script src="../scripts/jquery/dist/jquery.js"></script>
+<script src="../scripts/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../scripts/angular/angular.js"></script>
+<script src="../scripts/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../scripts/angular-ui-codemirror/ui-codemirror.js"></script>
+<script src="../scripts/marked/lib/marked.js"></script>
+<script src="../scripts/kity/dist/kity.js"></script>
+<script src="../scripts/hotbox/hotbox.js"></script>
+<script src="../scripts/json-diff/json-diff.js"></script>
+<script src="../scripts/kityminder-core/dist/kityminder.core.js"></script>
+<script src="../scripts/color-picker/dist/color-picker.min.js"></script>
+<!-- endbower -->
+<script src="../scripts/kityminder-editor/kityminder.editor.js"></script>
+<script src="../scripts/mindmap/mindmap.js"></script>
+
+<script>
+	//脑图部分初始化及事件注册
+    angular.module('kityminderCtn', ['kityminderEditor'])
+        .controller('MainController', function ($scope) {
+            $scope.initEditor = function (editor, minder) {
+            	//暴露全局对象方便操作
+                window.editor = editor;		
+                window.minder = minder;
+
+                /**
+                 * 下面是对脑图事件的处理
+                 * 定义鼠标滑过事件和单击事件
+                 * 默认的单击、双击、右键、快捷键事件已经在源码中做了屏蔽
+                 * 拖拽事件也在源码中作了调整，当节点发生级别调整的情况下，会首先要求用户确认
+                 */
+                //鼠标滑过事件注册，并且屏蔽连续滑过同一个node上的事件
+                minder.on('mousemove', handleMousemove);
+                //鼠标点击事件注册
+                minder.on('mousedown', handleMousedown);
+                
+                
+				//加载脑图，并设置展示样式               
+                loadMindMap("id");
+				
+            };
+        });
+
+
+</script>
+</html>
