@@ -50,7 +50,7 @@
 <body ng-app="kityminderCtn" ng-controller="MainController">
 	<kityminder-viewer on-init="initEditor(editor, minder)"></kityminder-viewer>
 	
-	<div id="card" style="background-color: red;position: relative;top:20px;left:100px;width:120px;height:200px;z-index: 100;display: none;">hhhhh</div>
+	<div id="card" style="background-color: red;position: relative;top:20px;left:100px;width:120px;height:200px;z-index: 100;display: none;"></div>
 </body>
 <!-- bower:js -->
 <script src="../scripts/jquery/dist/jquery.js"></script>
@@ -69,6 +69,8 @@
 <script src="../scripts/mindmap/mindmap.js"></script>
 
 <script>
+	var loading = true;
+	window.loading =  loading;
 	//脑图部分初始化及事件注册
     angular.module('kityminderCtn', ['kityminderEditor'])
         .controller('MainController', function ($scope) {
@@ -87,8 +89,10 @@
                 minder.on('mousemove', handleMousemove);
                 //鼠标点击事件注册
                 minder.on('mousedown', handleMousedown);
-                
-                
+                //对需要保存事件的处理
+                minder.on('savescene',handleSave);
+                //对样式的各类操作,触发保存
+                minder.on('contentchange',handleChange);
 				//加载脑图，并设置展示样式               
                 loadMindMap("id");
 				
@@ -97,4 +101,5 @@
 
 
 </script>
+	
 </html>

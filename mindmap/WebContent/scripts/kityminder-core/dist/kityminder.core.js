@@ -4808,11 +4808,24 @@ _p[45] = {
                 }
                 this._fadeDragSources(1);
                 if (this._dropSucceedTarget) {
-                    this._dragSources.forEach(function(source) {
+                	window.needUndo = false;
+                	//增加调整确认
+					if (confirm("确认调整?")==true)
+					{
+						 this._dragSources.forEach(function(source) {
+							source.setLayoutOffset(null);
+						});
+						this._minder.layout(-1);
+						this._minder.execCommand("movetoparent", this._dragSources, this._dropSucceedTarget);
+					} else{
+						window.needUndo = true;
+					}
+					
+                    /*this._dragSources.forEach(function(source) {
                         source.setLayoutOffset(null);
                     });
                     this._minder.layout(-1);
-                    this._minder.execCommand("movetoparent", this._dragSources, this._dropSucceedTarget);
+                    this._minder.execCommand("movetoparent", this._dragSources, this._dropSucceedTarget);*/
                 } else if (this._orderSucceedHint) {
                     var hint = this._orderSucceedHint;
                     var index = hint.node.getIndex();
@@ -5027,6 +5040,11 @@ _p[45] = {
                         dragger.dragEnd();
                         //e.stopPropagation();
                         e.preventDefault();
+                        //判断是否需要回滚
+                        if(window.needUndo){
+							editor.history.hasUndo() == false || editor.history.undo();
+							window.needUndo = false;
+						}
                     },
                     statuschange: function(e) {
                         if (e.lastStatus == "textedit" && e.currentStatus == "normal") {

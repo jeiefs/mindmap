@@ -47,6 +47,7 @@ var defaultOpts = {'template':"right",'theme':"fresh-blue-compat","expandlevel":
  */
 function loadMindMap(mapid,userid,options,content){
 	if(content){
+		console.log("动态加载数据");
 		initMindMap(options,content);
 	}else{
 		$.ajax({
@@ -55,6 +56,7 @@ function loadMindMap(mapid,userid,options,content){
 			data:{"mapid":mapid,"userid":userid},
 			dataType:"json",
 			success:function(content){
+				console.log("后台请求脑图数据加载");
 				initMindMap(options,content);
 			}
 		});
@@ -106,6 +108,8 @@ function initMindMap(options,content){
     	minder.execCommand('Move', 'right2');
     }
     
+    window.loading = false; //加载完成
+    
 }
 
 /**鼠标滑过事件处理
@@ -125,7 +129,18 @@ function handleMousemove(e){
         //* `"screen"` - 以浏览器屏幕为参照坐标系 
         //* `"minder"` - （默认）以脑图画布为参照坐标系
         //* `{kity.Shape}` - 指定以某个 kity 图形为参照坐标系
-        showCard(target,e.getPosition("screen"));
+        
+        //取得node的边界
+        console.log(target);
+        rect = document.getElementById(target.rc.node.id).getBoundingClientRect();
+        var right = rect.right;	//节点右侧相对页面的坐标
+        var bottom = rect.bottom; //节点底部坐标
+        var left = rect.left;
+        var top = rect.top;
+        var headHeight = $('#main_top').outerHeight(true);//计算脑图上面部分的高度，从坐标中减除
+        console.log(headHeight);
+        //在节点右下角显示卡片，避免和节点重叠
+        showCard(target,right,bottom-headHeight);
     }
 
 };
@@ -141,7 +156,7 @@ function handleMousedown(e){
     if(!node) return;	//如果点击触发者不是一个节点,则直接返回,如点击空白处
     //右击事件处理
     if(e.isRightMB()){
-    	handleRight(node);
+    	handleRight(node,e.getPosition("screen"));
     }else{
     	//单击事件处理
         handleClick(node);
@@ -155,10 +170,13 @@ function handleMousedown(e){
  * @param node 右击的节点
  * @returns
  */
-function handleRight(node){
+function handleRight(node,position){
+	if(!node) return;
+	cleanCard();
 	var nodelvl = node.getLevel();
-    //首先注释 kityminder.editor.js 中的 assemble(_p.r(13)); 关闭默认的事件处理
-    console.log('右击事件:'+node.getText()+' ,节点id : '+node.getData('id'));
+    
+    console.log('右击事件:'+node.getText()+' ,节点id : '+node.getData('id')+",nodeLvl:"+node.getLevel());
+    
     
 }
 
@@ -171,7 +189,6 @@ function handleRight(node){
 function handleClick(node){
 	console.log('单击事件:'+node.getText()+' ,节点id : '+node.getData('id'));
 	setNodeStyleWhenClick(node);
-	saveMindMap();
 }
 
 //设置节点点击时候的样式
@@ -198,14 +215,12 @@ function setNodeStyleWhenClick(node){
  * @param position	鼠标所在位置
  * @returns
  */
-function showCard(node,position){
+function showCard(node,x,y){
 	if(!node) return;
 	$cardDiv.hide();
 	var nodetext = node.getText();
-	var x = position.x;
-	var y = position.y;
 	//判断如何浮出
-	$cardDiv.html(nodetext).css("left",x).css("top",y).fadeIn("slow");
+	$cardDiv.html(nodetext).css("left",x).css("top",y).delay(1500).show(1);
 }
 
 /**
@@ -213,7 +228,27 @@ function showCard(node,position){
  * @returns
  */
 function cleanCard(){
-	$cardDiv.fadeOut();
+	$cardDiv.hide();
+}
+
+/**
+ * 保存事件的处理
+ * @returns
+ */
+function handleSave(){
+	console.log("触发保存事件后处理,调用saveMindMap");
+	saveMindMap();
+}
+
+/**
+ * 内容发生变更则触发保存
+ * @returns
+ */
+function handleChange(){
+	console.log("是否加载完成:",!window.loading);
+	if(!window.loading){
+		console.log("发生变化");
+	}
 }
 /**
  * 重新保存脑图
@@ -222,7 +257,7 @@ function cleanCard(){
 function saveMindMap() {
     editor.minder.exportData('json').then(function (content) {
         //todo 需要调用保存脑图的接口
-    	loadMindMap(null,null,null,parseJSON(content));
+    	
     });
 }
 
