@@ -7,6 +7,7 @@ var oldnode = "";	//上一个滑过的节点
 var currentnode = "";	//当前滑过的节点
 var $cardDiv = $("#card");	//卡片div
 var defaultOpts = {'template':"right",'theme':"fresh-blue-compat","expandlevel":null};	//脑图默认样式	
+var lockCard = false;	//显示卡片事件是否进行锁定，避免在其他操作的时候捣乱
 
 /**
  * 加载脑图
@@ -131,16 +132,31 @@ function handleMousemove(e){
         //* `{kity.Shape}` - 指定以某个 kity 图形为参照坐标系
         
         //取得node的边界
-        console.log(target);
-        rect = document.getElementById(target.rc.node.id).getBoundingClientRect();
+        var rect = document.getElementById(target.rc.node.id).getBoundingClientRect();
         var right = rect.right;	//节点右侧相对页面的坐标
         var bottom = rect.bottom; //节点底部坐标
         var left = rect.left;
         var top = rect.top;
         var headHeight = $('#main_top').outerHeight(true);//计算脑图上面部分的高度，从坐标中减除
-        console.log(headHeight);
-        //在节点右下角显示卡片，避免和节点重叠
-        showCard(target,right,bottom-headHeight);
+        
+        //显示卡片的位置计算
+        var x = 0;
+        var y = 0;
+         
+        //根据脑图高度和宽度判断，卡片不能越界
+        var totalHeight = $("#outbox").height();
+    	var cardHeight = $cardDiv.height();
+    	var cardWidth = $cardDiv.width();
+    	var cardbottom  = bottom - headHeight ;	//只是初步计算的卡片底部
+    	x = right + 20;
+    	
+    	//如果底部越界 则设置一个最低的
+    	if(cardbottom >= (totalHeight-cardHeight) ){
+    		y = totalHeight-cardHeight-20;
+    	}else{
+    		y = cardbottom;
+    	}
+        showCard(target,x,y);
     }
 
 };
@@ -156,17 +172,19 @@ function handleMousedown(e){
     if(!node){
 		//点击空白处，则隐藏右侧栏
     	hideRight();
+    	hideMenu();
 		return;
 	}
     //右击事件处理
     if(e.isRightMB()){
-    	handleRight(node,e.getPosition("screen"));
+    	handleRight(node,e);
     }else{
     	//单击事件处理
         handleClick(node);
     }
     //点击事件后清理 currentnode 避免重新滑过上一个节点的时候不再显示
 	currentnode = "";
+	
 };
 
 /**
@@ -174,14 +192,67 @@ function handleMousedown(e){
  * @param node 右击的节点
  * @returns
  */
-function handleRight(node,position){
+function handleRight(node,e){
 	if(!node) return;
-	cleanCard();
-	var nodelvl = node.getLevel();
+	cleanCard(); //隐藏卡片，避免互相影响
+	
+    var nodeLevel = node.getLevel();
+    var nodeHeight = 0;
+    if(nodeLevel == 0 ){
+    	nodeHeight = $("#menu1").height();
+    }else{
+    	nodeHeight = $("#menu2").height();
+    }
+	//找到右键的显示位置,避免越界
+	var rect = document.getElementById(node.rc.node.id).getBoundingClientRect();
+    var right = rect.right;	//节点右侧相对页面的坐标
+    var bottom = rect.bottom; //节点底部坐标
+    var headHeight = $('#main_top').outerHeight(true);//计算脑图上面部分的高度，从坐标中减除
     
-    console.log('右击事件:'+node.getText()+' ,节点id : '+node.getData('id')+",nodeLvl:"+node.getLevel());
+    //显示右键的位置计算
+    var x = right;
+    var y = bottom;
     
-    
+    hideMenu();	//隐藏以前的右键
+    showMenu(node,x,y);
+}
+
+/**
+ * 禁用card一段时间(秒钟)
+ * @param second
+ * @returns
+ */
+function doLockCard(second){
+	cleanCard();	
+	lockCard = true;
+	var unlock= function(){
+		lockCard = false;
+	}
+	setTimeout(unlock,second*1000);
+}
+
+/**
+ * 显示右键菜单
+ * @param node
+ * @param x
+ * @param y
+ * @returns
+ */
+function showMenu(node,x,y){
+	if(node.getLevel() == 0){
+		$("#menu1").css("left",x).css("top",y).show();
+	}else{
+		$("#menu2").css("left",x).css("top",y).show();
+	}
+	doLockCard(2);
+}
+/**
+ * 隐藏右键菜单
+ * @returns
+ */
+function hideMenu(){
+	$("#menu1").hide();
+	$("#menu2").hide();
 }
 
 
@@ -221,11 +292,11 @@ function setNodeStyleWhenClick(node){
  * @returns
  */
 function showCard(node,x,y){
+	if(lockCard) return;	//如果显示卡片的状态是锁定的 则不显示
 	if(!node) return;
 	$cardDiv.hide();
-	var nodetext = node.getText();
 	//判断如何浮出
-	$cardDiv.html(nodetext).css("left",x).css("top",y).delay(1500).show(1);
+	$cardDiv.css("left",x).css("top",y).show();
 }
 
 /**
@@ -261,9 +332,9 @@ function handleSave(){
  * @returns
  */
 function handleChange(){
-	console.log("是否加载完成:",!window.loading);
+	//console.log("是否加载完成:",!window.loading);
 	if(!window.loading){
-		console.log("发生变化");
+		//console.log("发生变化");
 	}
 }
 /**
