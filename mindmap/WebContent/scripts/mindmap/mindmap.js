@@ -121,6 +121,10 @@ function initMindMap(options,content){
 function handleMousemove(e){
 	//判断当前滑过的节点跟上一次事件的触发节点是否是同一个，如果相同，则不做处理，否则进行相应的事件相应操作
     var target = e.getTargetNode();
+    //如果不在节点上
+    if(target == null){
+    	cleanCard();
+    }
     if(target){
         currentnode = target.getData("id");
     }
@@ -148,7 +152,7 @@ function handleMousemove(e){
     	var cardHeight = $cardDiv.height();
     	var cardWidth = $cardDiv.width();
     	var cardbottom  = bottom - headHeight ;	//只是初步计算的卡片底部
-    	x = right + 20;
+    	x = right;
     	
     	//如果底部越界 则设置一个最低的
     	if(cardbottom >= (totalHeight-cardHeight) ){
