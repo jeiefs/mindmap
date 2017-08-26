@@ -153,7 +153,11 @@ function handleMousemove(e){
 function handleMousedown(e){
     cleanCard();	//如果之前有打开卡片，则进行清理
     var node = minder.getSelectedNode();	
-    if(!node) return;	//如果点击触发者不是一个节点,则直接返回,如点击空白处
+    if(!node){
+		//点击空白处，则隐藏右侧栏
+    	hideRight();
+		return;
+	}
     //右击事件处理
     if(e.isRightMB()){
     	handleRight(node,e.getPosition("screen"));
@@ -187,6 +191,7 @@ function handleRight(node,position){
  * @returns
  */
 function handleClick(node){
+	showRight(node.getData('id'));
 	console.log('单击事件:'+node.getText()+' ,节点id : '+node.getData('id'));
 	setNodeStyleWhenClick(node);
 }
@@ -231,6 +236,17 @@ function cleanCard(){
 	$cardDiv.hide();
 }
 
+/**
+ * 隐藏右侧栏
+ * @returns
+ */
+function hideRight(){
+	$("#rightbox").hide();
+}
+
+function showRight(nodeid){
+	$("#rightbox").show();
+}
 /**
  * 保存事件的处理
  * @returns
