@@ -54,6 +54,7 @@ function loadMindMap(mapid,userid,options,content){
 		$.ajax({
 			method:"POST",
 			url:"http://127.0.0.1:8080/mindmap/scripts/mindmap/mindDemo.json",	//todo 此处为测试参数，请修改为实际接口
+			//url:"https://www.skyfly.xin/mindmap/scripts/mindmap/mindDemo.json",	//todo 此处为测试参数，请修改为实际接口
 			data:{"mapid":mapid,"userid":userid},
 			dataType:"json",
 			success:function(content){
@@ -124,6 +125,7 @@ function handleMousemove(e){
     //如果不在节点上
     if(target == null){
     	cleanCard();
+    	currentnode = "";
     }
     if(target){
         currentnode = target.getData("id");
