@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="./css/style.css" />
+<link rel="stylesheet" href="./scripts/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.css">
+</head>
+<body class="framebody">
+
+<div class="obox">
+	
+	<!-- 头部 -->
+	<div class="otop">
+		<h1 class="logo clearfix"><img src="img/logo.png" /></h1>
+		<div class="top_menu clearfix">
+			<div class="searchfm"><input type="text" /><input type="button" /></div>
+		</div>
+		<div class="top_user">
+			<i>欢迎，用户名</i>
+			<em><img src="img/avatar_1.png" /></em>
+			<ul class="top_operate">
+				<a onClick="showPop('#pop_modify')" href="#none">修改密码</a>
+				<a href="#none">登出</a>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- onav -->
+	<div class="onav">
+		<div class="nav_left">
+			<select>
+				<option value="集团总公司">集团总公司</option>
+				<option value="集团总公司">集团总公司</option>
+				<option value="集团总公司">集团总公司</option>
+			</select>
+		</div>
+		<div class="nav_right">
+			<div class="otab">
+				<ul>
+					<li class="tab_on"><a href="nt.html" target="p_frame"><i class="ntico"></i><b>脑图</b></a></li>
+					<li class="tab_right"><a href="hsz.html" target="p_frame"><i class="kpico"></i><b>卡片</b></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="nav_center">
+			<div class="vmenu zt active">
+				<a href="#"><s></s><em>总体</em><i></i></a>
+				<div class="zt_menu">
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href=""><img src="img/set.png" />开源计划</a>
+				</div>
+			</div>
+			<div class="vmenu td">
+				<a href="#"><s></s><em>团队</em><i></i></a>
+				<div class="td_menu">
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href=""><img src="img/set.png" />开源计划</a>
+				</div>
+			</div>
+			<div class="vmenu gr">
+				<a href="#"><s></s><em>个人</em></a>
+			</div>
+			<div class="vmenu gd">
+				<a href="#"><s></s><em>归档</em></a>
+			</div>
+			<div class="vmenu hsz">
+				<a href="#"><s></s><em>回收站</em></a>
+				<div class="zt_menu">
+					<a href="">2222222</a>
+				</div>
+			</div>
+			<div class="vmenu qtcp">
+				<a href="#"><s></s><em>其他产品</em><i></i></a>
+				<div class="qtcp_menu">
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href="">开源计划</a>
+					<a href=""><img src="img/set.png" />开源计划</a>
+				</div>
+			</div>
+			<div class="vmenu xtgl">
+				<a href="#"><s></s><em>系统管理</em></a>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 主部 -->
+	<div class="omain">
+		<iframe name="p_frame" src="./mindmap/mindmap.html" frameborder="0" scrolling="no"></iframe>
+	</div>
+</div>
+
+<!-- 禁止操作层 -->
+<div class="no_operate"></div>
+
+<!-- 弹层-修改密码 -->
+<div class="pop_out" id="pop_modify">
+	<div class="popbox pop_modify">
+		<s class="pop_close"></s>
+		<h2 class="pop_title">密码修改</h2>
+		<div class="pop_content pop_modify_content">
+			<dl><input type="password" placeholder="旧密码" /></dl>
+			<dl><input type="password" placeholder="新密码" /></dl>
+			<dl><input type="password" placeholder="确认新密码" /></dl>
+		</div>
+		<div class="pop_submit"><input class="pub_btn" type="submit" value="确定" /></div>
+	</div>
+</div>
+
+</body>
+</html>
+<script src="./scripts/jquery.js"></script>
+<script src="./scripts/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./scripts/fun.js"></script>

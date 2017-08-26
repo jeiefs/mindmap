@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>脑图</title>
+<!-- bower:css -->
+<link rel="stylesheet" href="../scripts/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../scripts/codemirror/lib/codemirror.css" />
+<link rel="stylesheet" href="../scripts/hotbox/hotbox.css" />
+<link rel="stylesheet" href="../scripts/kityminder-core/dist/kityminder.core.css" />
+<link rel="stylesheet" href="../scripts/color-picker/dist/color-picker.min.css" />
+<!-- endbower -->
+<link rel="stylesheet" href="../scripts/kityminder-editor/kityminder.editor.min.css">
+<link rel="stylesheet" href="../css/nt.css" />
+<style>
+div.minder-editor-container {
+	position: absolute;
+	top: 0px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%
+}
+</style>
+
+</head>
+<body  class="sub_body" ng-app="kityminderCtn" ng-controller="MainController">
+	
+	<div class="otcon otcon_on">
+		<div class="main_top" id="main_top">
+			<h1 class="project_title">优能中心目标</h1>
+		</div>
+		
+		<div class="p_box p_box_out">
+			<div id="rightbox" style="display: none;">
+			<div class="ntright_side4">
+				<div class="otab">
+					<ul>
+						<li class="tab_left"><a href="#">关键成果</a></li>
+						<li class="tab_left"><a href="#">目标详情</a></li>
+						<li class="tab_on"><a href="#">目标日志</a></li>
+					</ul>
+				</div>
+				<div class="ntlist">
+					<dl class="clearfix">
+						<dt>
+							<h1>2017-06-20</h1>
+							<h2>工作日志</h2>
+						</dt>
+						<dd>
+							<p>一日，我与上帝一同出行。
+								路过一条河时，我看到水里有一个人在挣扎，我指着那个人问：“上帝，为什么你不去救那个人，难道他没有向你祈祷吗？”上帝回答：“不，他向我祈祷了两次，但我也救了他两次——第一次我让一根圆木从他身边漂过，他没有去抓。</p>
+							<h3>
+								<a href=""><img src="../img/file.png" />一根圆木从他身边漂过.jpg</a>
+							</h3>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<h1>2017-06-20</h1>
+							<h2>工作日志</h2>
+						</dt>
+						<dd>
+							<p>一日，我与上帝一同出行。
+								路过一条河时，我看到水里有一个人在挣扎，我指着那个人问：“上帝，为什么你不去救那个人，难道他没有向你祈祷吗？”上帝回答：“不，他向我祈祷了两次，但我也救了他两次——第一次我让一根圆木从他身边漂过，他没有去抓。</p>
+							<h3>
+								<a href=""><img src="../img/file.png" />一根圆木从他身边漂过.jpg</a>
+							</h3>
+						</dd>
+					</dl>
+				</div>
+			</div>
+
+			<div class="ntright_side3" style="display: none;">
+				<div class="otab">
+					<ul>
+						<li class="tab_left"><a href="#">关键成果</a></li>
+						<li class="tab_on"><a href="#">目标详情</a></li>
+						<li class="tab_right"><a href="#">目标日志</a></li>
+					</ul>
+				</div>
+				<div class="ntlist">
+					<dl class="frmdl clearfix">
+						<a class="qxbtn" href="">取消</a>
+						<a class="bcbtn" href="">保存</a>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<em>目标名称</em>
+						</dt>
+						<dd>
+							<textarea>冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳</textarea>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<em>开始时间</em>
+						</dt>
+						<dd>
+							<input type="text" value="2016-11-30">
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<em>开始时间</em>
+						</dt>
+						<dd>
+							<input type="text" value="2016-11-30">
+						</dd>
+					</dl>
+					<dl class="slectradio clearfix">
+						<dt>
+							<em>数值</em>
+						</dt>
+						<dd>
+							<i class="value_tab value_tab_on value_num"><s></s></i>
+						</dd>
+						<dt>
+							<em>百分比</em>
+						</dt>
+						<dd>
+							<i class="value_tab value_percent"><s></s></i>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<em>详情描述</em>
+						</dt>
+						<dd>
+							<textarea>冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳</textarea>
+						</dd>
+					</dl>
+					<dl class="fjlink clearfix">
+						<a href=""><img src="../img/file.png" />一根圆木从他身边漂过.jpg</a>
+					</dl>
+				</div>
+			</div>
+
+			<div class="ntright_side2" style="display: none;">
+				<div class="otab">
+					<ul>
+						<div class="gohomebtn">
+							<a href=""><img src="../img/gohome.png" />返回</a>
+						</div>
+						<li class="tab_on"><a href="#">成果详情</a></li>
+						<li class="tab_right"><a href="#">成果日志</a></li>
+					</ul>
+				</div>
+				<div class="ntlist">
+					<dl class="clearfix">
+						<dt>
+							<em>目标名称</em>
+						</dt>
+						<dd>
+							<p>冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳</p>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<em>开始时间</em>
+						</dt>
+						<dd>
+							<p>2016-11-30</p>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<em>开始时间</em>
+						</dt>
+						<dd>
+							<p>2016-11-30</p>
+						</dd>
+					</dl>
+					<dl class="slectradio clearfix">
+						<dt>
+							<em>数值</em>
+						</dt>
+						<dd>
+							<i class="value_tab value_tab_on value_num"><s></s></i>
+						</dd>
+						<dt>
+							<em>百分比</em>
+						</dt>
+						<dd>
+							<i class="value_tab value_percent"><s></s></i>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<em>详情描述</em>
+						</dt>
+						<dd>
+							<p>冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳冯思佳</p>
+						</dd>
+					</dl>
+					<dl class="fjlink clearfix">
+						<a href=""><img src="../img/file.png" />一根圆木从他身边漂过.jpg</a>
+					</dl>
+				</div>
+			</div>
+
+			<div class="ntright_side" style="display: none;">
+				<div class="addbtn">
+					<a href=""><img src="../img/add.png" />新增关键成果</a>
+				</div>
+				<div class="otab">
+					<ul>
+						<li class="tab_on"><a href="#">关键成果</a></li>
+						<li class="tab_right"><a href="#">目标详情</a></li>
+						<li class="tab_right"><a href="#">目标日志</a></li>
+					</ul>
+				</div>
+				<div class="ntlist">
+					<ul>
+						<li>
+							<p>2【客户指标】通过实践，确定一个签单率不低于30%的产品推广模式</p>
+							<div class="p_process_box">
+								<div class="p_percent">30%</div>
+								<div class="p_praise"></div>
+								<div class="p_full"></div>
+								<div class="p_process" p_num="50">
+									<em></em>
+								</div>
+							</div>
+							<div class="ntedit clear">
+								<a href="">[详情]</a><a href="">[工作日志]</a>
+							</div>
+						</li>
+						<li>
+							<p>2【客户指标】通过实践，确定一个签单率不低于30%的产品推广模式</p>
+							<div class="p_process_box">
+								<div class="p_percent">30%</div>
+								<div class="p_praise"></div>
+								<div class="p_full"></div>
+								<div class="p_process" p_num="50">
+									<em></em>
+								</div>
+							</div>
+							<div class="ntedit clear">
+								<a href="">[详情]</a><a href="">[工作日志]</a>
+							</div>
+						</li>
+						<li>
+							<p>2【客户指标】通过实践，确定一个签单率不低于30%的产品推广模式</p>
+							<div class="p_process_box">
+								<div class="p_percent">30%</div>
+								<div class="p_praise"></div>
+								<div class="p_full"></div>
+								<div class="p_process" p_num="50">
+									<em></em>
+								</div>
+							</div>
+							<div class="ntedit clear">
+								<a href="">[详情]</a><a href="">[工作日志]</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			</div>
+			<kityminder-viewer on-init="initEditor(editor, minder)"></kityminder-viewer>
+		</div>
+	</div>
+	<div id="card" style="background-color: red; position: relative; top: 20px; left: 100px; width: 120px; height: 200px; z-index: 100; display: none;"></div>
+</body>
+<!-- bower:js -->
+<script src="../scripts/jquery/dist/jquery.js"></script>
+<script src="../scripts/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../scripts/angular/angular.js"></script>
+<script src="../scripts/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../scripts/angular-ui-codemirror/ui-codemirror.js"></script>
+<script src="../scripts/marked/lib/marked.js"></script>
+<script src="../scripts/kity/dist/kity.js"></script>
+<script src="../scripts/hotbox/hotbox.js"></script>
+<script src="../scripts/json-diff/json-diff.js"></script>
+<script src="../scripts/kityminder-core/dist/kityminder.core.js"></script>
+<script src="../scripts/color-picker/dist/color-picker.min.js"></script>
+<!-- endbower -->
+<script src="../scripts/kityminder-editor/kityminder.editor.js"></script>
+<script src="../scripts/mindmap/mindmap.js"></script>
+<script src="../scripts/fun.js"></script>
+<script>
+	var loading = true;
+	window.loading = loading;
+	//脑图部分初始化及事件注册
+	angular.module('kityminderCtn', [ 'kityminderEditor' ]).controller(
+			'MainController', function($scope) {
+				$scope.initEditor = function(editor, minder) {
+					//暴露全局对象方便操作
+					window.editor = editor;
+					window.minder = minder;
+
+					/**
+					 * 下面是对脑图事件的处理
+					 * 定义鼠标滑过事件和单击事件
+					 * 默认的单击、双击、右键、快捷键事件已经在源码中做了屏蔽
+					 * 拖拽事件也在源码中作了调整，当节点发生级别调整的情况下，会首先要求用户确认
+					 */
+					//鼠标滑过事件注册，并且屏蔽连续滑过同一个node上的事件
+					minder.on('mousemove', handleMousemove);
+					//鼠标点击事件注册
+					minder.on('mousedown', handleMousedown);
+					//对需要保存事件的处理
+					minder.on('savescene', handleSave);
+					//对样式的各类操作,触发保存
+					minder.on('contentchange', handleChange);
+					//加载脑图，并设置展示样式               
+					loadMindMap("id");
+
+				};
+			});
+</script>
+
+</html>
