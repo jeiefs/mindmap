@@ -126,11 +126,12 @@ function handleMousemove(e){
     if(target == null){
     	cleanCard();
     	currentnode = "";
+    	return;
     }
     if(target){
         currentnode = target.getData("id");
     }
-    if(currentnode != oldnode){
+    if(currentnode != oldnode || currentnode == ""){
         oldnode = currentnode;	//重新指定上一个操作的节点为当前节点
         //使用e.getPosition找到当前事件触发的坐标。此方法有3个参照的坐标系，此处使用相对屏幕的绝对坐标
         //* `"screen"` - 以浏览器屏幕为参照坐标系 
@@ -268,12 +269,18 @@ function hideMenu(){
  * @returns
  */
 function handleClick(node){
+	hideRight();	//隐藏右键菜单
 	showRight(node.getData('id'));
 	console.log('单击事件:'+node.getText()+' ,节点id : '+node.getData('id'));
 	setNodeStyleWhenClick(node);
 }
 
-//设置节点点击时候的样式
+/**
+ * 设置节点点击时候的样式
+ * 支持设置填充色、文字颜色、边框颜色、边框粗细
+ * @param node
+ * @returns
+ */
 function setNodeStyleWhenClick(node){
 	//minder.execCommand('background', "red");	//设置填充色
 	//minder.execCommand('forecolor', "green");	//设置前景色 文字颜色 ，与node.setData('color', color) 后进行render效果一样
@@ -330,7 +337,12 @@ function showRight(nodeid){
  */
 function handleSave(){
 	console.log("触发保存事件后处理,调用saveMindMap");
-	saveMindMap();
+	editor.minder.exportData('json').then(function (content) {
+		//content 即为json格式的脑图文件
+        //todo 需要调用保存脑图的接口
+    	console.log("此处需要调用脑图接口,请自行实现!");
+    	
+    });
 }
 
 /**
@@ -343,15 +355,40 @@ function handleChange(){
 		//console.log("发生变化");
 	}
 }
+
 /**
- * 重新保存脑图
+ * 增加下级节点
  * @returns
  */
-function saveMindMap() {
-    editor.minder.exportData('json').then(function (content) {
-        //todo 需要调用保存脑图的接口
-    	
-    });
+function addChild(){
+	minder.execCommand('AppendChildNode');
+	hideMenu();
+	minder.fire("savescene");	//触发保存动作
 }
 
+/**
+ * 新增下级
+ * @returns
+ */
+function addSiblingNode(){
+	minder.execCommand('AppendSiblingNode');
+	hideMenu();
+	minder.fire("savescene");	//触发保存动作
+}
+
+/**
+ * 删除节点
+ * @returns
+ */
+function delNode(){
+	var node = minder.getSelectedNode();	
+    if(node){
+		var nodeText = node.getText();
+		if(confirm("是否删除节点 "+nodeText+" ?")){
+			minder.execCommand('RemoveNode');
+			hideMenu();
+			minder.fire("savescene");	//触发保存动作
+		}
+	}
+}
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>脑图</title>
 <!-- bower:css -->
-<link rel="stylesheet" href="../scripts/bootstrap/dist/css/bootstrap.css" />
+<!-- <link rel="stylesheet" href="../scripts/bootstrap/dist/css/bootstrap.css" /> -->
 <link rel="stylesheet" href="../scripts/codemirror/lib/codemirror.css" />
 <link rel="stylesheet" href="../scripts/hotbox/hotbox.css" />
 <link rel="stylesheet" href="../scripts/kityminder-core/dist/kityminder.core.css" />
@@ -300,17 +300,17 @@ div.minder-editor-container {
 		
 		<div id="menu1" class="yjcd2" style="display: none;">
 			<dl>
-				<dd><em>新增下级</em></dd>
-				<dd><em>删除</em></dd>
-				<dd><em>新增关键成果</em></dd>
+				<dd onclick="addChild()"><em>新增下级</em></dd>
+				<dd onclick="delNode()"><em>删除</em></dd>
+				<dd onclick="alert('新增关键成果,实现参考新增下级');"><em>新增关键成果</em></dd>
 			</dl>
 		</div>
 		<div id="menu2" class="yjcd2" style="display: none;">
 			<dl>
-				<dd><em>新增同级</em></dd>
-				<dd><em>新增下级</em></dd>
-				<dd><em>删除</em></dd>
-				<dd><em>新增关键成果</em></dd>
+				<dd onclick="addSiblingNode()"><em>新增同级</em></dd>
+				<dd onclick="addChild()"><em>新增下级</em></dd>
+				<dd onclick="delNode()"><em>删除</em></dd>
+				<dd onclick="alert('新增关键成果,实现参考新增下级');"><em>新增关键成果</em></dd>
 			</dl>
 		</div>
 	</body>
